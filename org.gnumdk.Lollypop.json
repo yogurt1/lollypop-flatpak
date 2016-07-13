@@ -1,0 +1,27 @@
+{
+    "app-id": "org.gnumdk.Lollypop",
+    "branch": "0.9.112",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.20",
+    "sdk": "org.gnome.Sdk",
+    "command": "lollypop",
+    "rename-desktop-file": "lollypop.desktop",
+    "desktop-file-name-prefix": "",
+    "finish-args": [
+      "--share=ipc",
+      "--share=network",
+      "--socket=x11",
+      "--socket=wayland",
+      "--socket=pulseaudio",
+      "--filesystem=home",
+      "--talk-name=org.freedesktop.Notifications"
+    ],
+    "modules": [{
+      "name": "lollypop",
+      "make-install-args": ["prefix=/app"],
+      "sources": [{
+          "type": "git",
+          "url": "https://github.com/gnumdk/lollypop"
+        }]
+    }]
+}
