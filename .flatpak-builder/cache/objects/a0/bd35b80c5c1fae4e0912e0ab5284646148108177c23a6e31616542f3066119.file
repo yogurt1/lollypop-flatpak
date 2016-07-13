@@ -1,4 +1,0 @@
-[Application]
-name=org.gnumdk.Lollypop
-runtime=org.gnome.Platform/x86_64/3.20
-sdk=org.gnome.Sdk/x86_64/3.20

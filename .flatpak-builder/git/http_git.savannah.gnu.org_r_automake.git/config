@@ -1,8 +1,0 @@
-[core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = true
-[remote "origin"]
-	url = http://git.savannah.gnu.org/r/automake.git
-	fetch = +refs/*:refs/*
-	mirror = true
