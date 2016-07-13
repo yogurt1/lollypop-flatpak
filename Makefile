@@ -11,6 +11,7 @@ bundle:
 	@flatpak build-bundle repo org.gnumdk.Lollypop.bundle org.gnumdk.Lollypop 0.9.112
 
 %.app: %.json
+	@rm -rf app
 	@flatpak-builder --ccache --require-changes --repo=$(REPO) --subject="Build of $<, `date`" ${EXPORT_ARGS} app $<
 
 

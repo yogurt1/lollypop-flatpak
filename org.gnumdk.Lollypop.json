@@ -5,6 +5,8 @@
     "runtime-version": "3.20",
     "sdk": "org.gnome.Sdk",
     "command": "lollypop",
+    "copy-icon": true,
+    "rename-icon": "lollypop",
     "rename-desktop-file": "lollypop.desktop",
     "desktop-file-name-prefix": "",
     "finish-args": [
@@ -14,14 +16,15 @@
       "--socket=wayland",
       "--socket=pulseaudio",
       "--filesystem=home",
-      "--talk-name=org.freedesktop.Notifications"
+      "--talk-name=org.freedesktop.Notifications",
+      "--talk-name=org.freedesktop.DBus",
+      "--own-name=org.gnumdk.Lollypop"
     ],
     "modules": [{
-      "name": "automake",
+      "name" :"pylast",
       "sources": [{
-        "type": "git",
-        "branch": "v1.15",
-        "url": "http://git.savannah.gnu.org/r/automake.git"
+        "type": "script",
+        "commands": ["pip3 install pylast"]
       }]
     },{
       "name": "gmime",
@@ -29,6 +32,10 @@
         "type": "git",
         "branch": "GMIME_2_6_20",
         "url": "https://github.com/GNOME/gmime"
+      },{
+        "type": "patch",
+        "path": "gmime-autogen.patch"
+
       }]
     },{
       "name": "totel-pl-parser",
