@@ -1,4 +1,4 @@
 app
 repo
-org.gnome.Lollypop.bundle
+*.bundle
 .flatpak-builder
