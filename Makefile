@@ -1,13 +1,13 @@
 APP = $(foreach file, $(wildcard *.json), $(subst .json,.app,$(file)))
 REPO = repo
 
-all: build bundle
+all: build
 build: $(APP)
-
+install: bundle
 clean:
 	@rm -rf app repo .flatpak-builder $(subst .app,.bundle,$(APP))
 
-bundle:
+bundle: build
 	@flatpak build-bundle repo org.gnumdk.Lollypop.bundle org.gnumdk.Lollypop 0.9.112
 
 %.app: %.json
