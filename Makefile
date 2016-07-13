@@ -1,7 +1,7 @@
 APP = $(foreach file, $(wildcard *.json), $(subst .json,.app,$(file)))
 REPO = repo
 
-all: clean build bundle
+all: build bundle
 build: $(APP)
 
 clean:

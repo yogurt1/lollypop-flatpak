@@ -17,6 +17,27 @@
       "--talk-name=org.freedesktop.Notifications"
     ],
     "modules": [{
+      "name": "automake",
+      "sources": [{
+        "type": "git",
+        "branch": "v1.15",
+        "url": "http://git.savannah.gnu.org/r/automake.git"
+      }]
+    },{
+      "name": "gmime",
+      "sources": [{
+        "type": "git",
+        "branch": "GMIME_2_6_20",
+        "url": "https://github.com/GNOME/gmime"
+      }]
+    },{
+      "name": "totel-pl-parser",
+      "sources": [{
+        "type": "git",
+        "branch": "V_3_10_6",
+        "url": "https://github.com/GNOME/totem-pl-parser"
+      }]
+    },{
       "name": "lollypop",
       "make-install-args": ["prefix=/app"],
       "sources": [{
