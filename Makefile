@@ -1,17 +1,31 @@
-APP = $(foreach file, $(wildcard *.json), $(subst .json,.app,$(file)))
+#APP = $(foreach file, $(wildcard *.json), $(subst .json,.app,$(file)))
 REPO = repo
+APP = $(patsubst %.json,%,$(wildcard *.json))
+VER = 0.9.112
 
-all: build
-build: $(APP)
-install: bundle
+all: app
+build: app
+app: $(APP)
+
+test:
+	@echo $(APP:%=%.bundle)
+
+uninstall:
+	@flatpak --user uninstall $(APP)
+
+install: build
+	@flatpak --user install --bundle $(APP:%=%.bundle)
+
+reinstall: uninstall install
+
 clean:
-	@rm -rf app repo .flatpak-builder $(subst .app,.bundle,$(APP))
+	@rm -rf app repo .flatpak-builder $(APP:%=%.bundle)
 
-bundle: build
-	@flatpak build-bundle repo org.gnumdk.Lollypop.bundle org.gnumdk.Lollypop 0.9.112
 
-%.app: %.json
+%: %.json
 	@rm -rf app
-	@flatpak-builder --ccache --require-changes --repo=$(REPO) --subject="Build of $<, `date`" ${EXPORT_ARGS} app $<
+	@echo $@
+	@flatpak-builder --ccache --require-changes --repo=$(REPO) --subject="Build of $@ `date`" ${EXPORT_ARGS} app $<
+	@flatpak build-bundle repo $(patsubst %.json,%.flatpak,$<) $@ $(VER)
 
-
+.PHONY: all clean test uninstall install build
